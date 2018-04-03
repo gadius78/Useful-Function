@@ -1,0 +1,29 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include <stdlib.h>
+#include <memory.h>
+#include <string>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+	ofstream test("test.txt");
+	test.open("test.txt");
+	string s;
+	getline(cin, s);
+
+	if (test.is_open()) {
+		
+		cout << s << '\n';
+
+	}
+	else {
+		cout << "입출력 실패!" << '\n';
+	}
+
+
+
+	return 0;
+}
