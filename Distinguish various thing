@@ -1,0 +1,35 @@
+#include "stdafx.h"
+#include <iostream>
+#include <stdlib.h>
+#include <memory.h>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int a;
+	cin >> a;
+	if (a > 0) {
+		if (a % 2 == 0) {
+			cout << "plus" << '\n';
+			cout << "even" << '\n';
+		}
+		else {
+			cout << "plus" << '\n';
+			cout << "odd" << '\n';
+		}
+	}
+	else {
+		if (a % 2 == 0) {
+			cout << "minus" << '\n';
+			cout << "even" << '\n';
+		}
+		else {
+			cout << "minus" << '\n';
+			cout << "odd" << '\n';
+		}
+	}
+
+	
+}
+
