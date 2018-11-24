@@ -1,0 +1,32 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main(){
+	int gcd=1;
+	int lcm =1;
+	int flag = 1;
+	int a, b;
+	
+	scanf("%d %d",&a,&b);
+	
+	for(int i=1;i<10;i++){
+		while(flag <5001){
+			if(!(a/i && b/i)){
+			gcd = gcd *i;
+			a = a/i;
+			b = b/i;
+			flag++;
+			}
+			else{
+			break;
+			}
+			
+		}
+	
+		
+	}
+	lcm = gcd * a * b;
+	cout << gcd << '\n';
+	cout << lcm << '\n';
+}
