@@ -1,0 +1,17 @@
+void rtrim(string& s, const string& delimiters = " \f\n\r\t\v" )
+{
+   s.erase( s.find_last_not_of( delimiters ) + 1 );
+}
+ 
+void ltrim(string& s,  const string& delimiters = " \f\n\r\t\v" )
+{
+   s.erase( 0, s.find_first_not_of( delimiters ) );
+}
+ 
+void trim(string& s, const string& delimiters = " \f\n\r\t\v" )
+{
+    s.erase( s.find_last_not_of( delimiters ) + 1 ).erase( 0, s.erase( s.find_last_not_of( delimiters ) + 1 ).find_first_not_of( delimiters ) );
+}
+
+
+/* string형 문자열의 좌 우 전체 공백을 삭제하는 function */
