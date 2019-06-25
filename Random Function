@@ -1,0 +1,31 @@
+/******************************/
+
+/*
+
+	Random Function Code
+
+*/
+
+/******************************/
+#include<iostream>
+#include<ctime>
+using namespace std;
+
+int main(){
+	srand((unsigned int)time(0));
+
+	
+	//0~99의 난수
+	int nRandom0 = rand() % 100;
+
+	// 0~7의 난수
+	int nRandom1 = rand() % 8;
+
+	// 1~10의 난수
+	int nRandom2 = rand() % 10+1;
+
+	cout << nRandom0 << " / " << nRandom1 << " / "  << nRandom2 << " / "  << nRandom3 << endl;
+	//0~x사이의 수 rand()%(x+1)
+	// a~b rand()%(b-a+1)+a
+	return 0;
+}
