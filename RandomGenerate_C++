@@ -1,0 +1,30 @@
+#include <iostream>
+#include <random>
+using namespace std;
+ 
+int getRandomNumber ( int min, int max )
+{
+
+    random_device rn;
+    mt19937_64 rnd( rn() );
+ 
+
+    uniform_int_distribution<int> range(min, max);
+ 
+
+    return range( rnd );
+}
+ 
+int main ()
+{
+    int min = 0;
+    int max = 10;
+    for ( int i = 0 ; i < 10; i++ )
+    {
+        cout << getRandomNumber(min, max) << endl;
+    }
+    return 0;
+ 
+}
+
+// reference by https://gabble-workers.tistory.com
