@@ -1,0 +1,43 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<queue>
+#include<cstdio>
+#include<string>
+using namespace std;
+
+int decitobin(int N,int arr[]){
+	int temp = N;
+	int index = 0;
+
+	if(N<=1){
+		arr[index] = N;
+	}
+	else
+	while(temp>0){
+		arr[index] = temp%2;
+		temp = temp/2;
+		index++;
+	}
+	//arr[index]=1;
+
+	return index;
+}
+int main(){
+	string A;
+	int arr[32] ={0,};
+	cin >> A;
+	int a= stoi(A,nullptr,16);
+
+#if 1
+	int front_index = decitobin(a,arr);
+	for(int i=31;i>=0;i--){
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+#endif
+	
+	return 0;
+
+}
