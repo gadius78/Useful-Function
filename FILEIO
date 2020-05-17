@@ -1,0 +1,21 @@
+#include<cstdio>
+#include<fstream>
+#include<string>
+#include<iostream>
+
+using namespace std;
+
+int main() {
+
+	ifstream readFile;
+	readFile.open("test.txt");
+
+	while (!readFile.eof()) {
+
+		char temp[256];
+		readFile.getline(temp, 256);
+		cout << temp << endl;
+	}
+
+	return 0;	
+}
