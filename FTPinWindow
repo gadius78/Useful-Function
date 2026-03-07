@@ -1,0 +1,46 @@
+#include <windows.h>
+#include <wininet.h>
+#include <iostream>
+
+#pragma comment(lib, "wininet.lib") // 라이브러리 링크
+
+void uploadFileToFTP() {
+    HINTERNET hInternet, hFtpSession;
+
+    // 1. 인터넷 연결 초기화
+    hInternet = InternetOpen("MyFTPProgram", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
+    if (hInternet == NULL) return;
+
+    // 2. FTP 서버 연결 (IP, 포트, 아이디, 비밀번호)
+    hFtpSession = InternetConnect(hInternet, "192.168.0.10", INTERNET_DEFAULT_FTP_PORT, 
+                                  "username", "password", INTERNET_SERVICE_FTP, INTERNET_FLAG_PASSIVE, 0);
+
+/*
+    HINTERNET hFtpSession = InternetConnect(
+    hInternet,               // InternetOpen으로 만든 핸들
+    "1.2.3.4",               // 서버 IP
+    21,                      // FTP 포트
+    "myID",                  // 아이디
+    "myPW",                  // 비번
+    INTERNET_SERVICE_FTP,    // FTP 서비스 사용
+    INTERNET_FLAG_PASSIVE,   // 수동 모드 (방화벽 통과용)
+    0                        // 컨텍스트 (0)
+);
+*/
+
+if (hFtpSession == NULL) {
+    std::cout << "연결 실패! 에러코드: " << GetLastError() << std::endl;
+}
+
+    if (hFtpSession != NULL) {
+        // 3. 파일 업로드 (로컬 경로, 서버 저장 경로)
+        if (FtpPutFile(hFtpSession, "C:\\local_path\\data.csv", "remote_folder/data.csv", 
+                       FTP_TRANSFER_TYPE_BINARY, 0)) {
+            std::cout << "업로드 성공!" << std::endl;
+        } else {
+            std::cout << "업로드 실패. 에러코드: " << GetLastError() << std::endl;
+        }
+        InternetCloseHandle(hFtpSession);
+    }
+    InternetCloseHandle(hInternet);
+}
